@@ -12,6 +12,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/q.js/1.4.1/q.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/spark-md5/2.0.2/spark-md5.min.js"></script>
+    <script src="./scripts/dapp.js"></script>
     <title>Autenticador de documentos online</title>
 </head>
 
@@ -46,14 +47,15 @@
                         <hr>
                         <div class="row">
                             <div class="d-grid gap-2 col-6 mx-auto">
-                                <button class="btn btn-primary" onclick="sendDocument();" value="Calculate">Enviar
+                                <button class="btn btn-primary" onclick="sendDocument('file');" value="Calculate">Enviar
                                     arquivo</button>
                             </div>
                         </div>
                         <br>
                         <br>
                         <div class="row">
-                            <div class="alert alert-success alert-dismissible fade show" role="alert" id="autenticarSuccess">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                                id="autenticarSuccess">
                                 <strong>Documento autenticado com sucesso!</strong>
                                 <br>
                                 <br>
@@ -73,9 +75,48 @@
                         Verificar documento
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">Envie seu documento para verificar sua autenticidade</h5>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <br>
+                                <form>
+                                    <div class="form-group">
+                                        <label for="exampleFormControlFile1"></label>
+                                        <input type="file" class="form-control-file" id="verifyFile">
+                                    </div>
+                                </form>
+                                <br>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="d-grid gap-2 col-6 mx-auto">
+                                <button class="btn btn-primary" onclick="verifyDocument('verifyFile')"
+                                    value="Calculate">Verificar arquivo</button>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="row">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert"
+                                id="verifySuccess">
+                                <strong>O documento foi autenticado, informações:</strong>
+                                <br>
+                                <br>
+                                Autenticado por: <strong><span id="createdBy">xxxxxxxxxx</span></strong><br>
+                                Nome original: <strong><span id="name">xxxxxxxxxx</span></strong><br>
+                                Hash: <strong><span id="hash">xxxxxxxxxx</span></strong><br>
+                                Horário da autenticação: <strong><span id="createdAt">xxxxxxxxxx</span></strong>
+                                <button type="button" class="btn-close" onclick="hideVerifySuccess();"></button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert"
+                                id="verifyError">
+                                <strong>Nenhuma autenticação foi feita para o documento</strong>
+                                <button type="button" class="btn-close" onclick="hideVerifyError();"></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

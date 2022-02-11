@@ -44,8 +44,8 @@ function calculateMD5Hash(file, bufferSize) {
   return def.promise;
 }
 
-function calculate(cb) {
-  var input = document.getElementById('file');
+function calculate(id, cb) {
+  var input = document.getElementById(id);
   if (!input.files.length) {
     return;
   }
@@ -55,6 +55,7 @@ function calculate(cb) {
 
   calculateMD5Hash(file, bufferSize).then(
     function (result) {
+      result.fileName = file.name;
       cb(result, null)
     },
     function (err) {
