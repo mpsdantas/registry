@@ -57,7 +57,7 @@ function loadEvents() {
 	DApp.contracts.Registry.getPastEvents("Register", { fromBlock: 0, toBlock: "latest" }).then((result) => {
 		let row = "";
 		result.slice().reverse().forEach((evt, index) => {
-			if (index == 10){
+			if (index > 10){
 				return;
 			}
 			
